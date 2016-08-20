@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title></title>
+
+</head>
+<body style="width:60%;margin:auto;" ng-controller="CartCtrl">
+	<h1>Products</h1>
+	<ul ng-repeat = "product in products">
+		<li>
+			<h2>{{product.name}}</h2>
+			<span id ="price" style="float:right; margin-top:-70px;">
+				<h3>Rs.{{product.price}}</h3>
+				<a href="#" ng-click="updateCart(product)">Add to Cart</a>
+			</span>
+			<div style="clear:both"></div>
+		</li><br><br><br>
+	</ul>
+	
+	<table width="100%" border="1px solid black" ng-show="cart.length">
+		<thead>
+			<th>Product</th>
+			<th>Quantity</th>
+			<th>Rate</th>
+			<th>Cost</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat = "item in cart">
+				<td><button ng-click="removeCart(item)">X</button>{{item.name}}</td>
+
+				<td><button ng-click="decrement(item)">-</button>{{item.quantity}}<button ng-click="increment(item)">+</button></td>
+				
+				<td>{{item.price}}</td>
+				<td>{{item.quantity*item.price}}</td>
+			</tr>
+			<tr>
+				<td colspan="3" style="text-align:center" ng-model="total">TOTAL</td>
+				<td>{{total}}</td>
+				
+			</tr>
+		</tbody>
+	</table>
+
+	<script src = "angular.min.js"></script>
+	<script src = "jquery.min.js"></script>
+	<script src = "main.js"></script>
+</body>
+</html>
